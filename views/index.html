@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Lien pour Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+    <style>
+        body {
+            font-family: 'Quattrocento Sans', sans-serif;
+            scroll-behavior: smooth; /* Défilement fluide */
+            background-color: #FAF9F6;
+        }
+
+        h1, h2, h3, .tt {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: #FAF9F6;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            transition: transform 0.5s ease; /* Transition for smooth slide */
+        }
+
+        .slide {
+            flex: 1 0 100%;
+            scroll-snap-align: start;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.418); /* Fond noir semi-transparent */
+        }
+
+        /* Par défaut, style pour les grands écrans */
+        .slide-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            max-width: 90%;
+            margin: 0 auto;
+            top: -25%; /* Déplace le texte vers le haut, ajuste selon tes besoins */
+        }
+
+        /* Styles pour les écrans de tablette (max-width: 768px) */
+        @media (max-width: 768px) {
+            .slide-content {
+                top: -15%; /* Ajuster la position du texte */
+                font-size: 1.5rem; /* Réduire la taille du texte */
+            }
+
+            .slide-content h1 {
+                font-size: 2.5rem; /* Taille du titre pour les tablettes */
+            }
+
+            .slide-content p {
+                font-size: 1.2rem; /* Taille du paragraphe pour les tablettes */
+            }
+
+            .slider-nav-text {
+                bottom: 2rem; /* Ajuster la position de la navigation textuelle */
+            }
+
+            .slider-nav-text a {
+                font-size: 0.9rem; /* Taille des liens de navigation textuelle */
+            }
+        }
+
+        /* Styles pour les écrans mobiles (max-width: 480px) */
+        @media (max-width: 480px) {
+            .slide-content {
+                top: -26%; /* Ajuster la position du texte */
+                font-size: 1.2rem; /* Réduire la taille du texte */
+            }
+
+            .slide-content h1 {
+                font-size: 2rem; /* Taille du titre pour les mobiles */
+            }
+
+            .slide-content p {
+                font-size: 1rem; /* Taille du paragraphe pour les mobiles */
+            }
+
+            .slider-nav-text {
+                bottom: 1.5rem; /* Ajuster la position de la navigation textuelle */
+            }
+
+            .slider-nav-text a {
+                font-size: 0.8rem; /* Taille des liens de navigation textuelle */
+            }
+
+            .slider-nav {
+                bottom: 0.5rem; /* Ajuster la position des points de navigation */
+            }
+
+            .slider-nav a {
+                width: 0.8rem; /* Réduire la taille des points de navigation */
+                height: 0.8rem;
+            }
+        }
+
+
+
+        .slider-nav {
+            display: flex;
+            column-gap: 1rem;
+            position: absolute;
+            bottom: 1.25rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .slider-nav a {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .slider-nav a:hover {
+            background-color: rgba(255, 255, 255, 1);
+            transform: scale(1.2);
+        }
+
+        .slider-nav-text {
+            display: flex;
+            column-gap: 2rem;
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            color: white;
+        }
+
+        .slider-nav-text a {
+            text-decoration: none;
+            color: white;
+            opacity: 0.75;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .slider-nav-text a:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .slider-nav-text a.active {
+            opacity: 1;
+            transform: translateY(-10px);
+            font-size: 1.1rem;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .navbar {
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar {
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: center; /* Centrer les éléments horizontalement */
+            align-items: center; /* Centrer les éléments verticalement */
+            padding: 1.1% 20%; /* Créer de l'espace vide de chaque côté */
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between; /* Les éléments à gauche et à droite seront espacés */
+            align-items: center;
+            width: 100%;
+            max-width: 1200px; /* Limiter la largeur si nécessaire */
+        }
+
+        .navbar .navbar-links {
+            display: flex;
+            justify-content: space-between; /* Espacement entre les liens */
+            gap: 1.5rem; /* Espacement entre chaque lien */
+        }
+
+        .navbar a {
+            transition: transform 0.3s ease, color 0.3s ease; 
+            color: #C1B09C;
+            font-weight: 700;
+            font-size: 25px;
+        }
+
+        .navbar a:hover {
+            color: #C1B09C; /* Changer la couleur lors du survol */
+            transform: scale(1.1); /* Agrandir légèrement l'élément au survol */
+        }
+
+
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 250); /* Fond blanc au scroll */
+        }
+
+        @media (max-width: 768px) {
+        .navbar {
+            padding: 2% 10%; /* Réduire l'espace latéral sur mobile */
+        }
+
+        /* Ajuster la marge du bouton et des liens en mobile */
+        .navbar .text-xl {
+            margin-right: 0; /* Pas de marge supplémentaire pour l'icône */
+        }
+
+        .navbar .navbar-links {
+            gap: 1rem; /* Réduire l'espace entre les liens */
+        }
+    }
+
+    .my-button {
+        background-color: #C1B09C;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.2s ease;  /* Pour une transition fluide */
+        letter-spacing: 3px;
+        }
+
+        .my-button:hover {
+        transform: scale(1.1);  /* Agrandit le bouton légèrement au survol */
+        }
+
+        .my-button:active {
+        transform: scale(0.95);  /* Réduit légèrement la taille après le clic */
+        background-color: #A0896F;  /* Change la couleur du fond après le clic */
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-container .my-button {
+            background-color: #C1B09C;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 3px;
+            margin-top: 10px;
+        }
+
+        .form-container .my-button:hover {
+            transform: scale(1.1);
+        }
+
+        .form-container .my-button:active {
+            transform: scale(0.95);
+            background-color: #A0896F;
+        }
+    </style>
+
+    <title>Nos meilleurs amis | Cameroun</title>
+</head>
+
+<body class="bg-gray-100">
+    <nav class="navbar fixed w-full z-10 top-0 left-0 px-4 py-2">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Icône du menu à gauche avec séparation -->
+            <div class="text-3xl font-bold" style="color: #C1B09C;"><i class="fas fa-bars"></i></div>
+            
+            <!-- Liens du menu à droite -->
+            <div class="navbar-links space-x-6">
+                <a href="#section1" class="text-white"><i class="fas fa-shopping-cart"></i></a>
+                <a href="#section2" class="text-white"><i class="fas fa-phone-alt"></i></a>
+                <a href="#section3" class="text-white text-center leading-none" style="font-size: 18px;">
+                    Demander <br> un chiot
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="section1" class="section p-0 m-0">
+        <div class="slider-wrapper p-0 m-0">
+            <div class="slider" id="slider">
+                <div id="slide-1" class="slide" style="background-image: url('../pictures/meute.jpeg');">
+                    
+                    <div class="slide-content">
+                        <h1 class="text-5xl font-bold">Amis précieux
+                        </h1><br>
+                        <p class="tt text-1xl md:text-2xl sm:text-xl font-bold">
+                            apporter l'amour aux familles ~ un chiot à la fois
+                        </p>
+                    </div>
+                    
+                </div>
+                <div id="slide-2" class="slide" style="background-image: url('../pictures/meute2.jpeg');">
+                    <div class="slide-content">
+                        <h1 class="text-5xl font-bold">Amis précieux
+                        </h1><br>
+                        <p class="tt text-1xl md:text-2xl sm:text-xl font-bold">
+                            apporter l'amour aux familles ~ un chiot à la fois
+                        </p>
+                    </div>
+                </div>
+                <div id="slide-3" class="slide" style="background-image: url('../pictures/meute3.jpeg');">
+                    <div class="slide-content">
+                        <h1 class="text-5xl font-bold">Amis précieux
+                        </h1><br>
+                        <p class="tt text-1xl md:text-2xl sm:text-xl font-bold">
+                            apporter l'amour aux familles ~ un chiot à la fois
+                        </p>
+                    </div>
+                </div>
+                <div id="slide-4" class="slide" style="background-image: url('../pictures/meute4.jpeg');">
+                    <div class="slide-content">
+                        <h1 class="text-5xl font-bold">Amis précieux
+                        </h1><br>
+                        <p class="tt text-1xl md:text-2xl sm:text-xl font-bold">
+                            apporter l'amour aux familles ~ un chiot à la fois
+                        </p>
+                    </div>
+                </div>
+                <div id="slide-5" class="slide" style="background-image: url('../pictures/meute5.jpeg');">
+                    <div class="slide-content">
+                        <h1 class="text-5xl font-bold">Amis précieux
+                        </h1><br>
+                        <p class="tt text-1xl md:text-2xl sm:text-xl font-bold">
+                            apporter l'amour aux familles ~ un chiot à la fois
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-nav">
+                <a href="#slide-1" class="w-2.5 h-2.5 rounded-full bg-white opacity-75 hover:opacity-100 transition-opacity duration-250" data-slide="1"></a>
+                <a href="#slide-2" class="w-2.5 h-2.5 rounded-full bg-white opacity-75 hover:opacity-100 transition-opacity duration-250" data-slide="2"></a>
+                <a href="#slide-3" class="w-2.5 h-2.5 rounded-full bg-white opacity-75 hover:opacity-100 transition-opacity duration-250" data-slide="3"></a>
+                <a href="#slide-4" class="w-2.5 h-2.5 rounded-full bg-white opacity-75 hover:opacity-100 transition-opacity duration-250" data-slide="4"></a>
+                <a href="#slide-5" class="w-2.5 h-2.5 rounded-full bg-white opacity-75 hover:opacity-100 transition-opacity duration-250" data-slide="5"></a>
+            </div>
+
+            <div class="slider-nav-text">
+                <a href="#slide-1" class="hover:underline transition duration-250" data-slide="1">hiots Cavapoo</a>
+                <a href="#slide-2" class="hover:underline transition duration-250" data-slide="2">Chiots caniches</a>
+                <a href="#slide-3" class="hover:underline transition duration-250" data-slide="3">Chiots Poochon</a>
+                <a href="#slide-4" class="hover:underline transition duration-250" data-slide="4">Chiots Cockapoo</a>
+                <a href="#slide-5" class="hover:underline transition duration-250" data-slide="5">Chiots Maltais</a>
+            </div>
+        </div>
+    </section>
+
+    
+        <div class="flex flex-col md:flex-row justify-between gap-0 w-full">
+            <!-- Première div avec la photo, description et bouton -->
+            <div class="flex-1 bg-white w-full flex flex-col items-center justify-center p-4">
+                <!-- Conteneur pour la photo ronde -->
+                <div class="w-80 h-80 rounded-full overflow-hidden border-4 border-gray-200 shadow-lg m-20">
+                    <img src="../pictures/7b34e799-f87d-4b3e-a0cf-a8d1d5dfaa6a.jpeg" alt="Photo de chien" class="w-full h-full object-cover">
+                </div>
+                
+            </div>
+        
+            <div class="flex-1 p-5 w-full flex flex-col items-start justify-center" style="background-color: #FAF9F6;">
+                <div class="m-20">
+                    <!-- Barre horizontale -->
+                    <hr class="mt-4" style="width: 24%; border-top: 7px solid #C1B09C;">
+                    
+                    <!-- Titre -->
+                    <h2 class="text-4xl font-semibold mt-4" style="color: black;">Adoptez un Chien</h2>
+                    
+                    <!-- Description -->
+                    <p class="mt-4 text-lg text-gray-700 text-left">
+                        Certaines choses remplissent simplement votre cœur sans effort...
+                    </p><br>
+                    
+                    <!-- Bouton d'appel à l'action -->
+                    <button class="my-button">
+                        Adopter maintenant
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+       
+    
+    
+        <section id="section2" class="flex flex-col md:flex-row justify-between gap-0 w-full">
+            <div class="video-container w-full">
+                <video id="myVideo" class="video-style" autoplay controls>
+                    <source src="../pictures/dogVideo.mp4" type="video/mp4">
+                    Mon chien.
+                </video>
+            </div>
+        
+            <div class="controls mt-4">
+                <button onclick="playPauseVideo()"></button>
+                <button onclick="muteUnmute()"></button>
+                <button onclick="changeSpeed()"></button>
+                <p id="status"></p>
+            </div>
+        </section>
+        
+        
+        
+    
+    <section id="section2" class="bg-gray-200">
+        <h2>Rejoignez notre liste de diffusion</h2>
+        <P>Rejoignez notre liste de diffusion pour être informé des nouveaux chiots disponibles et des portées à venir.
+
+        </P>
+        <div class="form-container">
+            <h2>Abonnez-vous</h2>
+            <form action="#" method="post">
+                <input type="text" name="nom" placeholder="Nom" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <button type="submit" class="my-button">ABONNER</button>
+            </form>
+        </div>
+    </section>
+
+   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+   
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fonction pour faire défiler le carrousel lors du clic sur un lien
+        const links = document.querySelectorAll('.slider-nav-text a, .slider-nav a');
+        const slider = document.getElementById('slider');
+
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const slideIndex = e.target.getAttribute('data-slide') - 1;
+                slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+
+                // Activation de l'élément de navigation
+                links.forEach(l => l.classList.remove('active'));
+                e.target.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
