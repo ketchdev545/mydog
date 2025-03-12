@@ -1,80 +1,241 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Web Stylisée</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Déroulant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Style général */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Icône du menu */
+        .menu-icon {
+            font-size: 3rem;
+            color: #C1B09C;
+            cursor: pointer;
+            padding: 20px;
+            z-index: 1000; /* Pour s'assurer que l'icône est toujours au-dessus */
+        }
+
+        /* Menu déroulant */
+        .menu {
+            display: none;
+            background-color: white;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 70px; /* Ajuster selon l'endroit où vous voulez le menu */
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease-out;
+        }
+
+        /* Menu visible (affiché lors du clic) */
+        .menu.show {
+            display: block;
+            max-height: 1000px; /* Ajuster selon la hauteur du menu */
+        }
+
+        /* Liens du menu */
+        .menu li {
+            padding: 15px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Animation des liens lors de l'ouverture du menu */
+        .menu.show li {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: calc(0.1s * var(--i));
+        }
+
+        /* Animation des liens lors de la fermeture du menu */
+        .menu:not(.show) li {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition-delay: calc(0.1s * (var(--total-items) - var(--i)));
+        }
+
+        /* Liens du menu */
+        .menu li a {
+            text-decoration: none;
+            color: black;
+            display: inline-block; /* Pour que le soulignement ne prenne que la largeur du texte */
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        /* Effet de survol (soulignement uniquement sur le mot) */
+        .menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #C1B09C;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        .menu li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Décalage vers le haut au survol */
+        .menu li a:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Liens plus petits */
+        .menu li.smaller a {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Séparateur pour les liens plus petits */
+        .menu li.separator {
+            border-top: 1px solid #f0f0f0;
+            margin-top: 10px;
+            padding-top: 20px;
+        }
+
+        /* Icônes de réseaux sociaux */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            color: #C1B09C;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #a08c7a;
+        }
+
+        /* Effet après clic (cercle d'animation) */
+        .menu li a.clicked {
+            position: relative;
+        }
+
+        .menu li a.clicked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: #C1B09C;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: clickAnimation 0.5s ease-out;
+        }
+
+        /* Animation pour l'effet de clic */
+        @keyframes clickAnimation {
+            0% {
+                width: 20px;
+                height: 20px;
+                opacity: 1;
+            }
+            100% {
+                width: 60px;
+                height: 60px;
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu {
+                width: 100%; /* Le menu prend toute la largeur sur mobile */
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
+<body>
 
-  <!-- Navigation -->
-  <nav class="bg-transparent fixed w-full z-10 top-0 left-0 px-4 py-2">
-    <div class="flex justify-between items-center">
-      <div class="text-white text-xl font-bold">Logo</div>
-      <div class="space-x-6 hidden md:flex">
-        <a href="#section1" class="text-white">Section 1</a>
-        <a href="#section2" class="text-white">Section 2</a>
-        <a href="#section3" class="text-white">Section 3</a>
-      </div>
+    <!-- Icône du menu -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        <i class="fas fa-bars" id="menuIcon"></i>
     </div>
-  </nav>
 
-  <!-- Section Principale avec Image en fond -->
-  <section class="h-screen bg-cover bg-center" style="background-image: url('./pictures/meute2.jpeg');">
-    <div class="flex items-center justify-center h-full bg-black bg-opacity-50">
-      <h1 class="text-white text-5xl font-bold">Bienvenue sur ma page</h1>
-    </div>
-  </section>
+    <!-- Menu -->
+    <ul class="menu">
+        <li style="--i: 0; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Demande de chiot</a></li>
+        <li style="--i: 1; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Chiots disponibles</a></li>
+        <li style="--i: 2; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Nos races</a></li>
+        <li style="--i: 3; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Portées à venir</a></li>
+        <li style="--i: 4; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Notre processus</a></li>
+        <li style="--i: 5; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Galerie</a></li>
+        <li style="--i: 6; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Contact</a></li>
+        <li style="--i: 7; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">À propos</a></li>
+        <li style="--i: 8; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Avis des clients</a></li>
+        <li style="--i: 9; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Programme de tutelle à domicile</a></li>
+        <!-- Séparateur et liens plus petits -->
+        <li class="separator smaller" style="--i: 10; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Se connecter</a></li>
+        <li class="smaller" style="--i: 11; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Créer un compte</a></li>
+        <li class="smaller" style="--i: 12; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Demande de chiot</a></li>
+        <li class="smaller" style="--i: 13; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Politique de remboursement</a></li>
+        <li class="smaller" style="--i: 14; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Politique de confidentialité</a></li>
+        <!-- Icônes de réseaux sociaux -->
+        <li class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-facebook-f" style="color: #C1B09C; font-size: 35px;"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-whatsapp" style="color: #C1B09C; font-size: 35px;"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-tiktok" style="color: #C1B09C; font-size: 35px;"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram" style="color: #C1B09C; font-size: 35px;"></i></a>
+        </li>
+    </ul>
 
-  <!-- Section 1 -->
-  <section id="section1" class="py-16 bg-gray-200">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-semibold text-center mb-8">Section 1</h2>
-      <p class="text-lg text-center">Contenu de la section 1 avec un fond blanc cassé.</p>
-    </div>
-  </section>
+    <script>
+        // Fonction pour afficher/masquer le menu
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('show');
+            
+            // Changer l'icône
+            const menuIcon = document.getElementById('menuIcon');
+            if (menu.classList.contains('show')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        }
 
-  <!-- Section 2 -->
-  <section id="section2" class="py-16 bg-gray-100">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-semibold text-center mb-8">Section 2</h2>
-      <p class="text-lg text-center">Contenu de la section 2 avec un fond blanc cassé.</p>
-    </div>
-  </section>
+        // Fonction pour ajouter l'effet après le clic
+        function addClickEffect(element) {
+            // Ajoute la classe 'clicked' à l'élément
+            element.classList.add('clicked');
 
-  <!-- Section 3 -->
-  <section id="section3" class="py-16 bg-gray-200">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-semibold text-center mb-8">Section 3</h2>
-      <p class="text-lg text-center">Contenu de la section 3 avec un fond blanc cassé.</p>
-    </div>
-  </section>
- 
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <div class="max-w-sm mx-auto bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer hover:scale-105 transition-transform duration-300" onclick="window.location.href='https://votre-lien.com'">
-      <img src="./pictures/meute.jpeg" alt="Image description" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
-      <div class="p-4">
-        <h2 class="text-xl font-semibold text-gray-800">Titre 1</h2>
-        <p class="text-gray-600 mt-2">Description 1</p>
-      </div>
-    </div>
-  
-    <div class="max-w-sm mx-auto bg-white rounded-lg shadow-lg overflow-hidden group cursor-pointer hover:scale-105 transition-transform duration-300" onclick="window.location.href='https://votre-lien2.com'">
-      <img src="./pictures/meute3.jpeg" alt="Image description" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
-      <div class="p-4">
-        <h2 class="text-xl font-semibold text-gray-800">Titre 2</h2>
-        <p class="text-gray-600 mt-2">Description 2</p>
-      </div>
-    </div>
-  </div>
-  
-  
-  <!-- Footer -->
-  <footer class="py-8 bg-gray-800 text-white text-center">
-    <p>&copy; 2025 Mon Site Web</p>
-  </footer>
+            // Retire la classe après l'animation
+            setTimeout(() => {
+                element.classList.remove('clicked');
+            }, 500);
+        }
+    </script>
 
 </body>
 </html>

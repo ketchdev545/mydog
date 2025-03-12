@@ -4,17 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos meilleurs amis | Cameroun</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Lien pour Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
-
     <style>
         body {
             font-family: 'Quattrocento Sans', sans-serif;
-            scroll-behavior: smooth; /* Défilement fluide */
+            scroll-behavior: smooth;
             background-color: #FAF9F6;
         }
 
@@ -44,7 +42,7 @@
             height: 100%;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
-            transition: transform 0.5s ease; /* Transition for smooth slide */
+            transition: transform 0.5s ease;
         }
 
         .slide {
@@ -65,10 +63,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.418); /* Fond noir semi-transparent */
+            background-color: rgba(0, 0, 0, 0.418);
         }
 
-        /* Par défaut, style pour les grands écrans */
         .slide-content {
             position: relative;
             z-index: 1;
@@ -76,67 +73,63 @@
             text-align: center;
             max-width: 90%;
             margin: 0 auto;
-            top: -25%; /* Déplace le texte vers le haut, ajuste selon tes besoins */
+            top: -25%;
         }
 
-        /* Styles pour les écrans de tablette (max-width: 768px) */
         @media (max-width: 768px) {
             .slide-content {
-                top: -15%; /* Ajuster la position du texte */
-                font-size: 1.5rem; /* Réduire la taille du texte */
+                top: -15%;
+                font-size: 1.5rem;
             }
 
             .slide-content h1 {
-                font-size: 2.5rem; /* Taille du titre pour les tablettes */
+                font-size: 2.5rem;
             }
 
             .slide-content p {
-                font-size: 1.2rem; /* Taille du paragraphe pour les tablettes */
+                font-size: 1.2rem;
             }
 
             .slider-nav-text {
-                bottom: 2rem; /* Ajuster la position de la navigation textuelle */
+                bottom: 2rem;
             }
 
             .slider-nav-text a {
-                font-size: 0.9rem; /* Taille des liens de navigation textuelle */
+                font-size: 0.9rem;
             }
         }
 
-        /* Styles pour les écrans mobiles (max-width: 480px) */
         @media (max-width: 480px) {
             .slide-content {
-                top: -26%; /* Ajuster la position du texte */
-                font-size: 1.2rem; /* Réduire la taille du texte */
+                top: -26%;
+                font-size: 1.2rem;
             }
 
             .slide-content h1 {
-                font-size: 2rem; /* Taille du titre pour les mobiles */
+                font-size: 2rem;
             }
 
             .slide-content p {
-                font-size: 1rem; /* Taille du paragraphe pour les mobiles */
+                font-size: 1rem;
             }
 
             .slider-nav-text {
-                bottom: 1.5rem; /* Ajuster la position de la navigation textuelle */
+                bottom: 1.5rem;
             }
 
             .slider-nav-text a {
-                font-size: 0.8rem; /* Taille des liens de navigation textuelle */
+                font-size: 0.8rem;
             }
 
             .slider-nav {
-                bottom: 0.5rem; /* Ajuster la position des points de navigation */
+                bottom: 0.5rem;
             }
 
             .slider-nav a {
-                width: 0.8rem; /* Réduire la taille des points de navigation */
+                width: 0.8rem;
                 height: 0.8rem;
             }
         }
-
-
 
         .slider-nav {
             display: flex;
@@ -198,102 +191,57 @@
         .navbar {
             background-color: transparent;
             transition: background-color 0.3s ease;
-        }
-
-        .navbar {
-            background-color: transparent;
-            transition: background-color 0.3s ease;
             display: flex;
-            justify-content: center; /* Centrer les éléments horizontalement */
-            align-items: center; /* Centrer les éléments verticalement */
-            padding: 1.1% 20%; /* Créer de l'espace vide de chaque côté */
+            justify-content: center;
+            align-items: center;
+            padding: 1.1% 20%;
         }
 
         .navbar .container {
             display: flex;
-            justify-content: space-between; /* Les éléments à gauche et à droite seront espacés */
+            justify-content: space-between;
             align-items: center;
             width: 100%;
-            max-width: 1200px; /* Limiter la largeur si nécessaire */
+            max-width: 1200px;
         }
 
         .navbar .navbar-links {
             display: flex;
-            justify-content: space-between; /* Espacement entre les liens */
-            gap: 1.5rem; /* Espacement entre chaque lien */
+            justify-content: space-between;
+            gap: 1.5rem;
         }
 
         .navbar a {
-            transition: transform 0.3s ease, color 0.3s ease; 
+            transition: transform 0.3s ease, color 0.3s ease;
             color: #C1B09C;
             font-weight: 700;
             font-size: 25px;
         }
 
         .navbar a:hover {
-            color: #C1B09C; /* Changer la couleur lors du survol */
-            transform: scale(1.1); /* Agrandir légèrement l'élément au survol */
+            color: #C1B09C;
+            transform: scale(1.1);
         }
 
-
-
         .navbar.scrolled {
-            background-color: rgba(255, 255, 255, 250); /* Fond blanc au scroll */
+            background-color: rgba(255, 255, 255, 250);
         }
 
         @media (max-width: 768px) {
-        .navbar {
-            padding: 2% 10%; /* Réduire l'espace latéral sur mobile */
+            .navbar {
+                padding: 2% 10%;
+            }
+
+            .navbar .text-xl {
+                margin-right: 0;
+            }
+
+            .navbar .navbar-links {
+                gap: 1rem;
+            }
         }
 
-        /* Ajuster la marge du bouton et des liens en mobile */
-        .navbar .text-xl {
-            margin-right: 0; /* Pas de marge supplémentaire pour l'icône */
-        }
-
-        .navbar .navbar-links {
-            gap: 1rem; /* Réduire l'espace entre les liens */
-        }
-    }
-
-    .my-button {
-        background-color: #C1B09C;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        font-size: 15px;
-        cursor: pointer;
-        transition: all 0.2s ease;  /* Pour une transition fluide */
-        letter-spacing: 3px;
-        }
-
-        .my-button:hover {
-        transform: scale(1.1);  /* Agrandit le bouton légèrement au survol */
-        }
-
-        .my-button:active {
-        transform: scale(0.95);  /* Réduit légèrement la taille après le clic */
-        background-color: #A0896F;  /* Change la couleur du fond après le clic */
-        }
-
-        .form-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .form-container input[type="text"],
-        .form-container input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .form-container .my-button {
+        .my-button {
             background-color: #C1B09C;
             color: white;
             padding: 10px 20px;
@@ -302,32 +250,172 @@
             cursor: pointer;
             transition: all 0.2s ease;
             letter-spacing: 3px;
-            margin-top: 10px;
         }
 
-        .form-container .my-button:hover {
+        .my-button:hover {
             transform: scale(1.1);
         }
 
-        .form-container .my-button:active {
+        .my-button:active {
             transform: scale(0.95);
             background-color: #A0896F;
         }
-    </style>
 
-    <title>Nos meilleurs amis | Cameroun</title>
+        .menu-icon {
+            font-size: 2rem;
+            color: #C1B09C;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .menu {
+            display: none;
+            background-color: white;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: max-height 0.5s ease-out;
+            z-index: 999;
+        }
+
+        .menu.show {
+            display: block;
+        }
+
+        .menu li {
+            padding: 15px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu.show li {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: calc(0.1s * var(--i));
+        }
+
+        .menu li a {
+            text-decoration: none;
+            color: black;
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #C1B09C;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        .menu li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        .menu li a:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu li.smaller a {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .menu li.separator {
+            border-top: 1px solid #f0f0f0;
+            margin-top: 10px;
+            padding-top: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            color: #C1B09C;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #a08c7a;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 2% 10%;
+            }
+
+            .menu {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100">
     <nav class="navbar fixed w-full z-10 top-0 left-0 px-4 py-2">
         <div class="container mx-auto flex justify-between items-center">
-            <!-- Icône du menu à gauche avec séparation -->
-            <div class="text-3xl font-bold" style="color: #C1B09C;"><i class="fas fa-bars"></i></div>
-            
-            <!-- Liens du menu à droite -->
+            <div class="menu-icon" onclick="toggleMenu()">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </div>
+
+            <ul class="menu">
+                <li style="--i: 0; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Demande de chiot</a></li>
+                <li style="--i: 1; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Chiots disponibles</a></li>
+                <li style="--i: 2; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Nos races</a></li>
+                <li style="--i: 3; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Portées à venir</a></li>
+                <li style="--i: 4; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Notre processus</a></li>
+                <li style="--i: 5; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Galerie</a></li>
+                <li style="--i: 6; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Contact</a></li>
+                <li style="--i: 7; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">À propos</a></li>
+                <li style="--i: 8; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Avis des clients</a></li>
+                <li style="--i: 9; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Programme de tutelle à domicile</a></li>
+                <li class="separator smaller" style="--i: 10; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Se connecter</a></li>
+                <li class="smaller" style="--i: 11; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Créer un compte</a></li>
+                <li class="smaller" style="--i: 12; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Demande de chiot</a></li>
+                <li class="smaller" style="--i: 13; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Politique de remboursement</a></li>
+                <li class="smaller" style="--i: 14; --total-items: 15;"><a href="#" onclick="addClickEffect(this)">Politique de confidentialité</a></li>
+                <li class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f" style="color: #C1B09C; font-size: 35px;"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-whatsapp" style="color: #C1B09C; font-size: 35px;"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-tiktok" style="color: #C1B09C; font-size: 35px;"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram" style="color: #C1B09C; font-size: 35px;"></i></a>
+                </li>
+            </ul>
+
             <div class="navbar-links space-x-6">
-                <a href="#section1" class="text-white"><i class="fas fa-shopping-cart"></i></a>
-                <a href="#section2" class="text-white"><i class="fas fa-phone-alt"></i></a>
+                <a href="#section1" class="text-white" onclick="toggleOffcanvas()">
+                    <i class="fas fa-shopping-cart">
+
+                    </i>
+                </a>
+                <a href="tel:+237621062069" class="text-white">
+                    <i class="fas fa-phone-alt"></i>
+                </a>
                 <a href="#section3" class="text-white text-center leading-none" style="font-size: 18px;">
                     Demander <br> un chiot
                 </a>
@@ -339,20 +427,16 @@
         <div class="slider-wrapper p-0 m-0">
             <div class="slider" id="slider">
                 <div id="slide-1" class="slide" style="background-image: url('../pictures/meute.jpeg');">
-                    
                     <div class="slide-content">
-                        <h1 class="text-5xl font-bold">Amis précieux
-                        </h1><br>
+                        <h1 class="text-5xl font-bold" data-aos="fade-up">Amis précieux</h1><br>
                         <p class="tt text-1xl md:text-2xl sm:text-xl font-bold">
                             apporter l'amour aux familles ~ un chiot à la fois
                         </p>
                     </div>
-                    
                 </div>
                 <div id="slide-2" class="slide" style="background-image: url('../pictures/meute2.jpeg');">
                     <div class="slide-content">
-                        <h1 class="text-5xl font-bold">Amis précieux
-                        </h1><br>
+                        <h1 class="text-5xl font-bold">Amis précieux</h1><br>
                         <p class="tt text-1xl md:text-2xl sm:text-xl font-bold">
                             apporter l'amour aux familles ~ un chiot à la fois
                         </p>
@@ -360,8 +444,7 @@
                 </div>
                 <div id="slide-3" class="slide" style="background-image: url('../pictures/meute3.jpeg');">
                     <div class="slide-content">
-                        <h1 class="text-5xl font-bold">Amis précieux
-                        </h1><br>
+                        <h1 class="text-5xl font-bold">Amis précieux</h1><br>
                         <p class="tt text-1xl md:text-2xl sm:text-xl font-bold">
                             apporter l'amour aux familles ~ un chiot à la fois
                         </p>
@@ -369,8 +452,7 @@
                 </div>
                 <div id="slide-4" class="slide" style="background-image: url('../pictures/meute4.jpeg');">
                     <div class="slide-content">
-                        <h1 class="text-5xl font-bold">Amis précieux
-                        </h1><br>
+                        <h1 class="text-5xl font-bold">Amis précieux</h1><br>
                         <p class="tt text-1xl md:text-2xl sm:text-xl font-bold">
                             apporter l'amour aux familles ~ un chiot à la fois
                         </p>
@@ -378,8 +460,7 @@
                 </div>
                 <div id="slide-5" class="slide" style="background-image: url('../pictures/meute5.jpeg');">
                     <div class="slide-content">
-                        <h1 class="text-5xl font-bold">Amis précieux
-                        </h1><br>
+                        <h1 class="text-5xl font-bold">Amis précieux</h1><br>
                         <p class="tt text-1xl md:text-2xl sm:text-xl font-bold">
                             apporter l'amour aux familles ~ un chiot à la fois
                         </p>
@@ -396,7 +477,7 @@
             </div>
 
             <div class="slider-nav-text">
-                <a href="#slide-1" class="hover:underline transition duration-250" data-slide="1">hiots Cavapoo</a>
+                <a href="#slide-1" class="hover:underline transition duration-250" data-slide="1">Chiots Cavapoo</a>
                 <a href="#slide-2" class="hover:underline transition duration-250" data-slide="2">Chiots caniches</a>
                 <a href="#slide-3" class="hover:underline transition duration-250" data-slide="3">Chiots Poochon</a>
                 <a href="#slide-4" class="hover:underline transition duration-250" data-slide="4">Chiots Cockapoo</a>
@@ -405,80 +486,332 @@
         </div>
     </section>
 
-    
-        <div class="flex flex-col md:flex-row justify-between gap-0 w-full">
-            <!-- Première div avec la photo, description et bouton -->
-            <div class="flex-1 bg-white w-full flex flex-col items-center justify-center p-4">
-                <!-- Conteneur pour la photo ronde -->
-                <div class="w-80 h-80 rounded-full overflow-hidden border-4 border-gray-200 shadow-lg m-20">
-                    <img src="../pictures/7b34e799-f87d-4b3e-a0cf-a8d1d5dfaa6a.jpeg" alt="Photo de chien" class="w-full h-full object-cover">
-                </div>
+    <div class="flex flex-col md:flex-row justify-between gap-0 w-full">
+        <br>
+        <div class="flex-1 bg-white w-full flex flex-col items-center justify-center p-4">
+            
+            <div class="w-80 h-80 rounded-full overflow-hidden border-4 border-gray-200 shadow-lg m-20">
+                <img src="../pictures/7b34e799-f87d-4b3e-a0cf-a8d1d5dfaa6a.jpeg" alt="Photo de chien" class="w-full h-full object-cover">
                 
             </div>
-        
-            <div class="flex-1 p-5 w-full flex flex-col items-start justify-center" style="background-color: #FAF9F6;">
-                <div class="m-20">
-                    <!-- Barre horizontale -->
-                    <hr class="mt-4" style="width: 24%; border-top: 7px solid #C1B09C;">
-                    
-                    <!-- Titre -->
-                    <h2 class="text-4xl font-semibold mt-4" style="color: black;">Adoptez un Chien</h2>
-                    
-                    <!-- Description -->
-                    <p class="mt-4 text-lg text-gray-700 text-left">
-                        Certaines choses remplissent simplement votre cœur sans effort...
-                    </p><br>
-                    
-                    <!-- Bouton d'appel à l'action -->
-                    <button class="my-button">
-                        Adopter maintenant
-                    </button>
+        </div>
+        <div class="flex-1 p-5 w-full flex flex-col items-start justify-center" style="background-color: #FAF9F6;">
+            <div class="m-20">
+                <br><br><br><br>
+                <hr class="mt-4" style="width: 24%; border-top: 7px solid #C1B09C;">
+                <h2 class="text-4xl font-semibold mt-4" style="color: black;">Adoptez un Chien</h2>
+                <p class="mt-4 text-lg text-gray-700 text-left">
+                    Certaines choses remplissent simplement votre cœur sans effort...
+                </p><br>
+                <button class="my-button">
+                    Adopter maintenant
+                </button>
+                <br><br><br><br><br><br>
+            </div>
+        </div>
+    </div>
+
+    <section id="section2" class="flex flex-col md:flex-row justify-between gap-0 w-full">
+        <div class="video-container" data-aos="fade-up">
+            <div id="video-placeholder" class="video-placeholder" onclick="loadVideo()">
+                <img src="image.png" alt="Cliquez pour charger la vidéo" class="w-full h-full object-cover">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
                 </div>
             </div>
-            
+            <video id="myVideo" class="video-style hidden" controls>
+                <source src="../pictures/dogVideo.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
         </div>
-       
-    
-    
-        <section id="section2" class="flex flex-col md:flex-row justify-between gap-0 w-full">
-            <div class="video-container w-full">
-                <video id="myVideo" class="video-style" autoplay controls>
-                    <source src="../pictures/dogVideo.mp4" type="video/mp4">
-                    Mon chien.
-                </video>
-            </div>
-        
-            <div class="controls mt-4">
-                <button onclick="playPauseVideo()"></button>
-                <button onclick="muteUnmute()"></button>
-                <button onclick="changeSpeed()"></button>
-                <p id="status"></p>
-            </div>
-        </section>
-        
-        
-        
-    
-    <section id="section2" class="bg-gray-200">
-        <h2>Rejoignez notre liste de diffusion</h2>
-        <P>Rejoignez notre liste de diffusion pour être informé des nouveaux chiots disponibles et des portées à venir.
+        <div class="controls mt-4">
+            <button onclick="playPauseVideo()"></button>
+            <button onclick="muteUnmute()"></button>
+            <button onclick="changeSpeed()"></button>
+            <p id="status"></p>
+        </div>
 
-        </P>
-        <div class="form-container">
-            <h2>Abonnez-vous</h2>
-            <form action="#" method="post">
-                <input type="text" name="nom" placeholder="Nom" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <button type="submit" class="my-button">ABONNER</button>
-            </form>
+        
+    </section>
+
+    <section id="section2" style="background-color: #FAF9F6; height: 100vh;">
+        <div class="flex items-center justify-center h-full">
+            <div class="text-center p-8">
+                <h2 class="text-3xl font-semibold mb-4">Rejoignez notre liste de diffusion</h2>
+                <p class="text-lg mb-6">Rejoignez notre liste de diffusion pour être informé des nouveaux chiots disponibles et des portées à venir.</p>
+                <div class="w-full max-w-xx p-8 mx-auto">
+                    <form>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="flex flex-col">
+                                <label for="nom" class="text-gray-700 font-semibold">Nom</label>
+                                <input type="text" id="nom" name="nom" placeholder="Entrez votre nom"
+                                    class="mt-2 p-3 border-b-2 border-gray-300 rounded-lg focus:outline-none focus:ring-0 focus:border-blue-500">
+                            </div>
+                            <div class="flex flex-col">
+                                <label for="email" class="text-gray-700 font-semibold">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Entrez votre email"
+                                    class="mt-2 p-3 border-b-2 border-gray-300 rounded-lg focus:outline-none focus:ring-0 focus:border-blue-500">
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <button type="submit" class="my-button font-semibold">Envoyer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
-   
+    <section id="section2" style="background-color: #FAF9F6; height: 100vh;">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Nos clients satisfaits</h2>
+            <div class="relative overflow-hidden">
+                <div class="flex transition-transform duration-500 ease-in-out" id="carousel">
+                    <div class="min-w-full md:min-w-[50%] flex justify-center p-2">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center max-w-md w-full">
+                            <img src="https://via.placeholder.com/100" alt="Client 1" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <p class="text-gray-700 italic">
+                                "Nous avons adopté un magnifique chiot grâce à cette entreprise. Le service était impeccable et notre nouveau compagnon est en parfaite santé !"
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-900">— Marie D.</p>
+                        </div>
+                    </div>
+                    <div class="min-w-full md:min-w-[50%] flex justify-center p-2">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center max-w-md w-full">
+                            <img src="https://via.placeholder.com/100" alt="Client 2" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <p class="text-gray-700 italic">
+                                "Très professionnel et attentionné. Notre chiot est arrivé bien soigné et avec tous les documents nécessaires. Je recommande vivement !"
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-900">— Jean P.</p>
+                        </div>
+                    </div>
+                    <div class="min-w-full md:min-w-[50%] flex justify-center p-2">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center max-w-md w-full">
+                            <img src="https://via.placeholder.com/100" alt="Client 3" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <p class="text-gray-700 italic">
+                                "Une expérience incroyable ! Notre famille est ravie de notre nouveau chiot. Merci pour votre accompagnement et votre gentillesse."
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-900">— Sophie L.</p>
+                        </div>
+                    </div>
+                    <div class="min-w-full md:min-w-[50%] flex justify-center p-2">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center max-w-md w-full">
+                            <img src="https://via.placeholder.com/100" alt="Client 4" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <p class="text-gray-700 italic">
+                                "Le processus d'adoption était simple et transparent. Notre chiot est adorable et bien éduqué. Merci !"
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-900">— Thomas R.</p>
+                        </div>
+                    </div>
+                    <div class="min-w-full md:min-w-[50%] flex justify-center p-2">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center max-w-md w-full">
+                            <img src="https://via.placeholder.com/100" alt="Client 5" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <p class="text-gray-700 italic">
+                                "Nous sommes très heureux de notre choix. Le personnel est à l'écoute et notre chiot est en parfaite santé."
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-900">— Laura M.</p>
+                        </div>
+                    </div>
+                    <div class="min-w-full md:min-w-[50%] flex justify-center p-2">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center max-w-md w-full">
+                            <img src="https://via.placeholder.com/100" alt="Client 6" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <p class="text-gray-700 italic">
+                                "Un service client exceptionnel. Notre chiot est arrivé rapidement et en excellente condition. Merci !"
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-900">— Marc B.</p>
+                        </div>
+                    </div>
+                    <div class="min-w-full md:min-w-[50%] flex justify-center p-2">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center max-w-md w-full">
+                            <img src="https://via.placeholder.com/100" alt="Client 7" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <p class="text-gray-700 italic">
+                                "Nous avons été très bien conseillés. Notre chiot est parfait et s'adapte bien à notre famille."
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-900">— Emma T.</p>
+                        </div>
+                    </div>
+                    <div class="min-w-full md:min-w-[50%] flex justify-center p-2">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center max-w-md w-full">
+                            <img src="https://via.placeholder.com/100" alt="Client 8" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <p class="text-gray-700 italic">
+                                "Une entreprise sérieuse et fiable. Notre chiot est en pleine forme et nous en prenons soin chaque jour."
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-900">— Nicolas G.</p>
+                        </div>
+                    </div>
+                    <div class="min-w-full md:min-w-[50%] flex justify-center p-2">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center max-w-md w-full">
+                            <img src="https://via.placeholder.com/100" alt="Client 9" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <p class="text-gray-700 italic">
+                                "Nous recommandons cette entreprise à tous les amoureux des chiens. Notre chiot est un vrai bonheur !"
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-900">— Julie C.</p>
+                        </div>
+                    </div>
+                    <div class="min-w-full md:min-w-[50%] flex justify-center p-2">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center max-w-md w-full">
+                            <img src="https://via.placeholder.com/100" alt="Client 10" class="w-24 h-24 rounded-full mx-auto mb-4">
+                            <p class="text-gray-700 italic">
+                                "Un service impeccable et des chiots en excellente santé. Nous sommes ravis de notre adoption."
+                            </p>
+                            <p class="mt-4 font-semibold text-gray-900">— Paul D.</p>
+                        </div>
+                    </div>
+                </div>
+                <button id="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition">
+                    &larr;
+                </button>
+                <button id="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition">
+                    &rarr;
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="section2" class="relative h-screen" style="background-color: #FAF9F6;">
+        <div class="absolute inset-0 z-0">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.54662036401!2d11.529028542252687!3d3.9068334149042054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x108bc6009bcfadff%3A0x561805e524dad274!2sDovv%20Tongolo!5e0!3m2!1sfr!2sde!4v1741644268166!5m2!1sfr!2sde"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+        </div>
+    </section>
+
+    <div id="chat-button" class="fixed bottom-6 right-6">
+        <button onclick="toggleChatBox()" class="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+        </button>
+    </div>
+
+    <div id="chat-box" class="hidden fixed bottom-24 right-6 bg-white p-6 border border-gray-200 shadow-2xl w-96 rounded-xl">
+        <div class="flex justify-between items-center pb-4 border-b border-gray-200">
+            <h2 class="text-xl font-semibold text-gray-800">Chat WhatsApp</h2>
+            <button onclick="toggleChatBox()" class="text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="chat-messages" class="mt-4 h-64 overflow-y-auto"></div>
+        <div class="mt-4">
+            <textarea id="message-input" class="w-full border p-2 rounded-lg resize-none" placeholder="Écrivez votre message..."></textarea>
+            <button onclick="sendMessage()" class="mt-2 bg-green-500 text-white p-2 w-full rounded-lg hover:bg-green-600 transition duration-300">Envoyer</button>
+        </div>
+    </div>
+
+    <!-- Offcanvas -->
+    <div id="offcanvasRight" class="fixed inset-y-0 right-0 w-96 bg-white shadow-lg transform transition-transform duration-300 translate-x-full z-50">
+        <!-- En-tête de l'offcanvas -->
+        <div class="flex justify-between items-center p-4 border-b">
+            <h5 class="text-lg font-semibold">SHOPPING CARS</h5>
+                <button class="text-gray-500 hover:text-gray-700" onclick="toggleOffcanvas()">
+            
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+        </div>
+
+            <!-- Corps de l'offcanvas -->
+            <div class="p-4">
+                <p>Your cart is currently empty...</p>
+            </div>
+    </div>
+
+    <!-- Overlay (fond sombre) -->
+    <div id="offcanvasOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40" onclick="toggleOffcanvas()" >
+    </div>
+
+    <!-- Script pour gérer l'ouverture/fermeture de l'offcanvas -->
+    <script>
+        function toggleOffcanvas() {
+        const offcanvas = document.getElementById('offcanvasRight');
+        const overlay = document.getElementById('offcanvasOverlay');
+
+        offcanvas.classList.toggle('translate-x-full');
+        overlay.classList.toggle('hidden');
+        }
+    </script>
+
+    <script>
+        function toggleChatBox() {
+            const chatBox = document.getElementById('chat-box');
+            chatBox.classList.toggle('hidden');
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById('message-input');
+            const message = messageInput.value.trim();
+
+            if (message) {
+                const messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
+                messages.push({
+                    sender: "Vous",
+                    message: message,
+                    timestamp: new Date().toLocaleString()
+                });
+                localStorage.setItem('chatMessages', JSON.stringify(messages));
+                messageInput.value = '';
+                loadMessages();
+            }
+        }
+
+        function loadMessages() {
+            const chatMessages = document.getElementById('chat-messages');
+            const messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
+            chatMessages.innerHTML = messages.map(msg => `
+                <div class="mb-2">
+                    <p class="text-sm text-gray-600"><strong>${msg.sender}</strong> (${msg.timestamp})</p>
+                    <p class="bg-gray-100 p-2 rounded-lg">${msg.message}</p>
+                </div>
+            `).join('');
+        }
+
+        loadMessages();
+    </script>
+
+    <script>
+        const carousel = document.getElementById('carousel');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+
+        let currentIndex = 0;
+        const totalSlides = 10;
+
+        const showSlide = (index) => {
+            const offset = -index * 100;
+            carousel.style.transform = `translateX(${offset}%)`;
+        };
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalSlides - 1;
+            showSlide(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex < totalSlides - 1) ? currentIndex + 1 : 0;
+            showSlide(currentIndex);
+        });
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Initialiser AOS -->
     <script>
-   
+        AOS.init({
+            duration: 500, // Durée de l'animation en ms
+            once: true, // L'animation ne se joue qu'une fois
+        });
+    </script>
+
+    <script>
         const navbar = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -488,7 +821,6 @@
             }
         });
 
-        // Fonction pour faire défiler le carrousel lors du clic sur un lien
         const links = document.querySelectorAll('.slider-nav-text a, .slider-nav a');
         const slider = document.getElementById('slider');
 
@@ -497,13 +829,98 @@
                 e.preventDefault();
                 const slideIndex = e.target.getAttribute('data-slide') - 1;
                 slider.style.transform = `translateX(-${slideIndex * 100}%)`;
-
-                // Activation de l'élément de navigation
                 links.forEach(l => l.classList.remove('active'));
                 e.target.classList.add('active');
             });
         });
     </script>
+
+    <!-- menu -->
+
+    <script>
+        // Fonction pour le menu
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            const menuIcon = document.getElementById('menuIcon');
+            menu.classList.toggle('show');
+            if (menu.classList.contains('show')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        }
+    </script>
+
+    <!-- la vidéo ne charge que lorsque l'utilisateur clique dessus -->
+
+    <script>
+        // Fonction pour charger la vidéo
+        function loadVideo() {
+            const videoPlaceholder = document.getElementById('video-placeholder');
+            const video = document.getElementById('myVideo');
+            videoPlaceholder.classList.add('hidden');
+            video.classList.remove('hidden');
+            video.load();
+            video.play();
+        }
+    </script>
+
+     <!-- Inclusion des icônes Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">À propos</h3>
+                    <p class="text-gray-400">Nous sommes une entreprise passionnée par la création de solutions innovantes pour nos clients.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Liens utiles</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Accueil</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">À propos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>Email: <a href="mailto:contact@example.com" class="hover:text-white transition duration-300">contact@example.com</a></li>
+                        <li>Téléphone: <a href="tel:+237621062069" class="hover:text-white transition duration-300">+237 621 06 20 69</a></li>
+                        <li>Adresse: 123 Rue Mangiuer, Ville, Pays</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Suivez-nous</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.675 0H1.325C.594 0 0 .594 0 1.325v21.351C0 23.406.594 24 1.325 24h11.497v-9.294h-3.127v-3.622h3.127V9.418c0-3.094 1.833-4.803 4.653-4.803 1.356 0 2.785.24 2.785.24v3.075h-1.566c-1.544 0-2.063.964-2.063 1.948v2.424h3.503l-.56 3.622h-2.943V24h5.767c.73 0 1.325-.594 1.325-1.325V1.325C24 .594 23.406 0 22.675 0z"/>
+                            </svg>
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Votre Entreprise. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
